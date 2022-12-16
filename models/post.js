@@ -5,7 +5,6 @@ const PostSchema = new Schema ({
     title: { type: String, minLength: 3, maxLength: 20, required: true },
     text: { type: String, minLength: 3, maxLength: 200, required: true },
     date: { type: Date, required: true },
-    author_name: { type: String, required: true }
 })
 
 module.exports = mongoose.model("Post", PostSchema, "blogPosts");
