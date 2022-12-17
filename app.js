@@ -1,5 +1,6 @@
 const express = require("express");
 const path = require("path");
+const cors = require("cors");
 const bodyParser = require("body-parser");
 require("dotenv").config();
 const jwt = require("jsonwebtoken");
@@ -21,8 +22,15 @@ db.on("error", console.error.bind(console, "MongoDB connection error:"));
 app.set("view-engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
 
+// CORS setup
+const corsOptions = {
+    // Asterisk allows for all origins to access API. Useful for development.
+    origin: "*",
+};
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+app.use(cors(corsOptions));
 
 // Routes
 app.get("/", (req, res) => {
